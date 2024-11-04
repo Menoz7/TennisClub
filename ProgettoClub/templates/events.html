@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+    .event-card {
+        margin-bottom: 20px;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center my-4">Eventi</h1>
+
+    <h2 class="my-4">Eventi Futuri</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card event-card">
+                <img src="https://via.placeholder.com/350x200?text=Conferenza+Tecnologia" class="card-img-top" alt="Conferenza sulla Tecnologia">
+                <div class="card-body">
+                    <h5 class="card-title">Conferenza sulla Tecnologia</h5>
+                    <p class="card-text">Data: 15 Novembre 2024</p>
+                    <p class="card-text">Descrizione: Un incontro per discutere le ultime novità nel campo della tecnologia.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card event-card">
+                <img src="https://via.placeholder.com/350x200?text=Workshop+Cucina" class="card-img-top" alt="Workshop di Cucina">
+                <div class="card-body">
+                    <h5 class="card-title">Workshop di Cucina</h5>
+                    <p class="card-text">Data: 20 Novembre 2024</p>
+                    <p class="card-text">Descrizione: Impara a cucinare piatti tipici con esperti chef.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card event-card">
+                <img src="https://via.placeholder.com/350x200?text=Concerto+Natale" class="card-img-top" alt="Concerto di Natale">
+                <div class="card-body">
+                    <h5 class="card-title">Concerto di Natale</h5>
+                    <p class="card-text">Data: 25 Dicembre 2024</p>
+                    <p class="card-text">Descrizione: Un concerto per celebrare le festività natalizie.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="my-4">Eventi Passati</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card event-card">
+                <img src="https://via.placeholder.com/350x200?text=Fiera+Libro" class="card-img-top" alt="Fiera del Libro">
+                <div class="card-body">
+                    <h5 class="card-title">Fiera del Libro</h5>
+                    <p class="card-text">Data: 10 Ottobre 2024</p>
+                    <p class="card-text">Descrizione: Una fiera dedicata agli amanti dei libri.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card event-card">
+                <img src="https://via.placeholder.com/350x200?text=Maratona+Primavera" class="card-img-top" alt="Maratona di Primavera">
+                <div class="card-body">
+                    <h5 class="card-title">Maratona di Primavera</h5>
+                    <p class="card-text">Data: 5 Aprile 2024</p>
+                    <p class="card-text">Descrizione: Un evento sportivo per tutti gli appassionati di corsa.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card event-card">
+                <img src="https://via.placeholder.com/350x200?text=Mostra+Arte" class="card-img-top" alt="Mostra d'Arte Contemporanea">
+                <div class="card-body">
+                    <h5 class="card-title">Mostra d'Arte Contemporanea</h5>
+                    <p class="card-text">Data: 15 Marzo 2024</p>
+                    <p class="card-text">Descrizione: Un'esposizione di opere di artisti emergenti.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Carica una nuova foto</h1>
+
+    <form action="{% url 'upload_photo' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="photoUpload">Scegli una foto da caricare</label>
+            <input type="file" class="form-control-file" id="photoUpload" name="photo" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Carica Foto</button>
+    </form>
+</div>
+{% endblock %}

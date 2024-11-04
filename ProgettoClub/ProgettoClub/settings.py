@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'crispy_bootstrap4',
     'gestione',
 ]
 
@@ -120,7 +122,19 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+#directory che contiene i file statici a livello di progetto come la cartella static
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),]
+
+ALLOWED_HOSTS = ['*']
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+

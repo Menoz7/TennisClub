@@ -1,0 +1,24 @@
+{% extends 'base.html' %}   
+
+{% load static %}
+
+{% block titile %} Home Tennis Club Novellara {% endblock %}
+
+{% block  header1 %}
+    <h1>Benvenuto nel Circolo Tennis La Rocca</h1>
+{% endblock %}
+
+{% block content %}
+
+<div class="text-center mb-4">
+    <img src="{% static 'images/foto1.jpg' %}" class="content-img" alt="Descrizione della foto">
+</div>
+
+<!--Bottone reindirizzeramento-->
+<div class="text-center mat-4">
+    <a href="#" class="btn btn-primary">Prenota</a> <!--{ url 'gestione:gestione_home' }-->
+</div>
+
+{% endblock %}
+
+

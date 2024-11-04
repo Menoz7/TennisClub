@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block header %}
+<!-- Lascio vuoto questo blocco per nascondere l'header -->
+<style>
+    body {
+    background: linear-gradient(90deg, #145889 0%, #AB47BC 100%)
+}
+
+.container-user {
+    background-color: #ffffff;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, .2);
+    margin-bottom: 50px
+}
+
+.title {
+    font-size: 25px;
+    font-weight: 100
+}
+
+.icon {
+    position: relative;
+    bottom: 11px
+}
+
+.mt-100 {
+    margin-top: 100px
+}
+
+.profile img {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%
+}
+
+.card {
+    border-radius: 15px;
+    margin-left: 30px;
+    margin-right: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2)
+}
+
+.card-body {
+    position: relative;
+    bottom: 35px
+}
+
+.btn {
+    margin-top: 36px;
+    margin-bottom: 45px;
+    background-color: #AB47BC;
+    border: none;
+    color: #fff
+}
+
+.btn:hover {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    color: #fff
+}
+
+.header {
+    padding-top: 40px
+}
+</style>
+{% endblock %}
+
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h1>Galleria Foto</h1>
+
+    {% if user.is_superuser %}
+        <form action="{% url 'upload_photo' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="photoUpload">Carica una nuova foto</label>
+                <input type="file" class="form-control-file" id="photoUpload" name="photo">
+            </div>
+            <button type="submit" class="btn btn-primary">Carica Foto</button>
+        </form>
+    {% endif %}
+
+    <div id="photo-slider" class="carousel slide mt-4" data-ride="carousel">
+        <div class="carousel-inner" style="min-height: 500px;">  <!-- dimensione minima per il contenitore -->
+            {% for photo in photos %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img class="d-block w-100 mb-4" src="{% static photo %}" alt="Foto">
+                </div>
+            {% endfor %}
+        </div>
+        <a class="carousel-control-prev" href="#photo-slider" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#photo-slider" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+<!---Team-->
+<div class='container-user mx-auto mt-5 col-md-10 mt-100'>
+    <div class="header">
+        <div class="title">Our Expert Team</div>
+        <p><small class="text-muted">Lorem Ipsum dolor samet</p>
+    </div>
+    <div class="row justify-content-center pb-5">
+        <div class="card col-md-3 mt-100">
+            <div class="card-content">
+                <div class="card-body p-0">
+                    <div class="profile"> <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583336/AAA/4.jpg"> </div>
+                    <div class="card-title mt-4"> Angelina Frederic<br /> <small>Head of marketing at K mart</small> </div>
+                    <div class="card-subtitle">
+                        <p> <small class="text-muted"> I expected anything less than perfect for the team of experts. They are the best team ever! </small> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card col-md-3 mt-100">
+            <div class="card-content">
+                <div class="card-body p-0">
+                    <div class="profile"> <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583319/AAA/3.jpg"> </div>
+                    <div class="card-title mt-4"> Noel Flantier<br /> <small>CEO of Redbull</small> </div>
+                    <div class="card-subtitle">
+                        <p> <small class="text-muted"> I really enjoyed working with them, they are Group of Professionals and they know what they're Doing </small> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card col-md-3 mt-100">
+            <div class="card-content">
+                <div class="card-body p-0">
+                    <div class="profile"> <img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574583246/AAA/2.jpg"> </div>
+                    <div class="card-title mt-4"> David Gregory<br /> <small>Resident Dj at ibdc</small> </div>
+                    <div class="card-subtitle">
+                        <p> <small class="text-muted"> I always wanted cool videos of my concerts never knew whom to talk to but they are amazing! </small> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+    $(document).ready(function(){
+        $('#photo-slider').carousel({
+            interval: 5000  // cambia immagine ogni 5 secondi
+        });
+    });
+</script>
+{% endblock %}
