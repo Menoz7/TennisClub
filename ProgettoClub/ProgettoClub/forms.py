@@ -15,12 +15,10 @@ class CreaUtente(UserCreationForm):
             user_type = 'member'
 
             #Crea o recupera il gruppo in base al tipo di utente
-            if user_type=='Cliente':
-                group, created = Group.objects.get_or_create(name="Members")
+            if user_type=='Membro':
+                group, created = Group.objects.get_or_create(name="Membri")
             elif user_type == 'Maestro':
-                group, created = Group.objects.get_or_create(name="Maestro")
-            elif user_type == 'Responsabile':
-                group, created = Group.objects.get_or_create(name="Responsabili")
+                group, created = Group.objects.get_or_create(name="Maestri")
 
             #aggiungo utente al gruppo
             group.user_set.add(user)

@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+
+{% block header %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+{% endblock%}
+
+{% block content%}
+
+<header>
+    <h1> Prenotazione per {{campo.nome}} </h1>
+</header>
+
+<section>
+    {%csrf_token%}
+    <form method="get" class="mb-4">
+        <div class="form-row">
+            <div class="col-md-6">
+                {{form.data_cercata.label}}
+                {{form.data_cercata}}
+            </div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary mt-4">Ricerca</button>
+            </div>
+        </div>
+    </form>
+
+    <h6 class="mt-3">Slot orari disponibili</h6>
+    <ul class="list-group">
+        {% for slot in slot_orari%}
+            {%if slot.campo == campo%}
+                <li class="list-group-item">
+                    <form method="post">
+                        {%csrf_token%}
+                        <input type="hidden" name="id_slot_orario" value="{{slot.id}}">
+                        <strong>{{ slot.ora_inizio}} - {{slot.ora_fine}}</strong>
+                        {% if form_prenotazione%}
+                            <div class="form-group">
+                                {{form_prenotazione.numero_di_giocatori.label}}
+                                {{form_prenotazione.numero_di_giocatori}}
+                            </div>
+                            <button type="submit" name="prenota_slot_orario" class="btn btn-success">Prenota</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-info">Seleziona</button>
+                        {% endif%}
+                    </form>
+                </li>
+            {%endif%}
+        {%endfor%}
+    </ul>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</section>
+<br>
+{% endblock%}

@@ -1,10 +1,73 @@
 {% extends 'base.html' %}
 
 {% block header %}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
 {% endblock %}
 
 {% block content %}
-<header>
-    <h1>Benvenuto nel sistema di prenotazioni CT La Rocca</h1>
-</header>
+<h1>Benvenuto nel sistema di prenotazioni del CT La Rocca</h1>
+
+<!-- Carousel wrapper -->
+<div
+  id="carouselMultiItemExample"
+  data-mdb-carousel-init class="carousel slide carousel-dark text-center"
+  data-mdb-ride="carousel"
+>
+  <!-- Controls -->
+  <div class="d-flex justify-content-center mb-4">
+    <button data-mdb-button-init
+      class="carousel-control-prev position-relative"
+      type="button"
+      data-mdb-target="#carouselMultiItemExample"
+      data-mdb-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button data-mdb-button-init
+      class="carousel-control-next position-relative"
+      type="button"
+      data-mdb-target="#carouselMultiItemExample"
+      data-mdb-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- Inner -->
+  <div class="carousel-inner py-4">
+    <!-- Single item -->
+    <div class="carousel-item active">
+      <div class="container">
+        <div class="row">
+           {% for campo in campi %} 
+          <div class="col-lg-4">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/181.webp"
+                class="card-img-top"
+                alt="Waterfall"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ campo.nome }}</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="{% url 'gestione:prenota_slot_orario' campo.id %}" data-mdb-ripple-init class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- Inner -->
+</div>
+<!-- Carousel wrapper -->
+
+
 {% endblock %}
