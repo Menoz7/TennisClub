@@ -126,3 +126,16 @@ def riepilogo(request, prenotazione_id):
     prenotazione = get_object_or_404(Prenotazione, id=prenotazione_id)
     return render(request, 'gestione/riepilogo.html',{'prenotazione': prenotazione})
 
+
+##############################
+##Modifica della prenotazione#
+##############################
+
+def mostra_prenotazione(request):
+    prenotazione = Prenotazione.objects.all()
+    return render(request, 'gestione/mostra_prenotazioni.html')
+
+
+def modifica_prenotazione(request, prenotazione_id):
+    prenotazione = get_object_or_404(Prenotazione, id=prenotazione_id)
+

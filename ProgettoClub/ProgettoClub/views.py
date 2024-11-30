@@ -30,7 +30,7 @@ class ResponsabileCreateView(PermissionRequiredMixin, UserCreateView):
     permission_required = "is_responsabile"
     form_class = CreaUtente
     template_name = 'user_create.html'
-    success_url = reverse_lazy('gestione_home')
+    success_url = reverse_lazy('gestione:gestione_home')
 
 class MaestroCreateView(PermissionRequiredMixin, UserCreateView):
     permission_required = "is_maestro"

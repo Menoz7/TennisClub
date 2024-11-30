@@ -74,6 +74,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ProgettoClub.wsgi.application'
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/' #URL a cui reindirizzare dopo il login
+LOGOUT_REDIRECT_URL = '/'
+
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
