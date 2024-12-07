@@ -47,11 +47,17 @@ class CampoForm(forms.Form):
 
 
 class PrenotazioneForm(forms.Form):
-    numero_di_giocatori = forms.IntegerField(min_value=1, max_value=4, label='Numero di giocatori')
+    CHOICE_LIST = [(2, "Singolo"), (4, "Doppio")]
+    numero_di_giocatori = forms.ChoiceField(label="Numero di giocatori", required=True, choices=CHOICE_LIST)
 
 
 class RicercaDataForm(forms.Form):
     data_cercata = forms.DateField(widget=forms.DateInput(attrs={'type':'date'}), label='Ricerca Data')
 
+class SelezionaCampoForm(forms.Form):
+    nuovo_campo = forms.ModelChoiceField(queryset=CampoTennis.objects.all(), empty_label="--Seleziona un campo --", widget=forms.Select(attrs={'class':'form-control'}))
 
 
+class ModificaPrenotazioneForm(forms.Form):
+    campo = forms.ModelChoiceField(queryset=CampoTennis.objects.all(), empty_label="--Seleziona un Campo--", widget=forms.Select(attrs={'class': 'form-control'}))
+    data_cercata = forms.DateField(widget=forms.DateInput(attrs={'type':'date'}), label='Ricerca Data')

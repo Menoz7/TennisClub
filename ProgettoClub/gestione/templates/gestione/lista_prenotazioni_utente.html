@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+
+
+{%block header%}
+{%endblock%}
+
+{%block content%}
+<div class="container mt-5">
+    <h2 class="mb-4">Lista Prenotazioni</h2>
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th>Campo</th>
+                <th>Data</th>
+                <th>Ora Inizio</th>
+                <th>Ora Fine</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for prenotazione in prenotazioni%}
+            <tr>
+                <td>{{prenotazione.campo}}</td>
+                <td>{{prenotazione.slot.data}}</td>
+                <td>{{prenotazione.slot.ora_inizio}}</td>
+                <td>{{prenotazione.slot.ora_fine}}</td>
+                <td>
+                    <a href="{%url 'gestione:mostra_prenotazione' prenotazione.id %}">
+                    <button class="btn btn-info btn-sm" >Mostra Dettagli</button>
+                    </a>
+                    <a href="{%url 'gestione:modifica_prenotazione' prenotazione.id%}">
+                    <button class="btn btn-primary btn-sm" >Modifica</button>
+                    </a>
+                    <a href="{%url 'gestione:elimina_prenotazione' prenotazione.id %}">
+                        <button class="btn btn-danger btn-sm" >Elimina</button>
+                    </a>
+                </td>
+            </tr>
+            {%endfor%}
+            <!-- Add more reservations as needed -->
+        </tbody>
+    </table>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{%endblock%}

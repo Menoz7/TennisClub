@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+
+{%block header%}
+{%endblock%}
+
+
+{% block content%}
+
+
+
+<div class="container mt-5">
+    <h1 class="text-center">Riepilogo Prenotazione</h1>
+    <div class="card">
+        <div class="card-header">
+            Dettagli Prenotazione
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Informazioni Cliente</h5>
+            <p class="card-text"><strong>Nome: </strong>{{prenotazione.utente.username}} </p>
+            <p class="card-text"><strong>Email: </strong> mario.rossi@example.com</p>
+            <p class="card-text"><strong>Telefono: </strong> +39 123 456 7890</p>
+            
+            <h5 class="card-title mt-4">Dettagli Prenotazione</h5>
+            <p class="card-text"><strong>Data: </strong> {{prenotazione.slot.data}}</p>
+            <p class="card-text"><strong>Ora Inizio: </strong> {{prenotazione.slot.ora_inizio}}</p>
+            <p class="card-text"><strong>Ora Fine: </strong> {{prenotazione.slot.ora_fine}}</p>
+            <p class="card-text"><strong>Numero di Persone: </strong> {{prenotazione.numero_di_giocatori}}</p>
+        </div>
+        <div class="card-footer text-muted">
+            Prenotazione confermata!
+        </div>
+    </div>
+    
+    <div class="text-center mt-4">
+        <a href="{%url 'gestione:lista_prenotazioni_utente' %}" class="btn btn-primary">Torna alla Lista</a>
+        <a href="modifica_prenotazione.html" class="btn btn-secondary">Modifica Prenotazione</a>
+    </div>
+</div>
+
+<br>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{%endblock%}

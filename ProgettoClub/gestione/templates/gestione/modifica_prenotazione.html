@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+
+{% block header%}
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+{%endblock%}
+
+
+{%block content%}
+
+<h2> Modifica prenotazione su {{prenotazione.campo}}</h2>
+
+<section>
+    <div class="container mt-5">
+        <h2>Seleziona il campo</h2>
+        <form method="POST">
+            {%csrf_token%}
+            <div class="form-group">
+                {{form.as_p}}
+            </div>  
+            <button type="submit" class="btn btn-primary mt-4">Ricerca</button>  
+        </form>
+    </div>
+
+<br>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{%endblock%}

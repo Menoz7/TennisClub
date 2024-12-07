@@ -4,6 +4,7 @@
 
 {% block titile %} Home Tennis Club Novellara {% endblock %}
 
+
 {% block  header1 %}
     <h1>Benvenuto nel Circolo Tennis La Rocca</h1>
 {% endblock %}
@@ -13,11 +14,54 @@
 <div class="text-center mb-4">
     <img src="{% static 'images/foto1.jpg' %}" class="content-img" alt="Descrizione della foto">
 </div>
+{% if user.is_authenticated%}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-3 mb-3">
+            <a href="{%url 'gestione:lista_prenotazioni_utente' %}">
+            <button class="btn grid-button btn-success"><i class="fas fa-plus"></i>Mostra le mie Prenotazioni</button>
+            </a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a href="{%url 'gestione:lista_prenotazioni_utente' %}">
+            <button class="btn grid-button btn-primary"><i class="fas fa-edit"></i> Modifica Prenotazione</button>
+            </a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <button class="btn grid-button btn-danger"><i class="fas fa-trash"></i> Elimina Prenotazione</button>
+        </div>
+        {% if user.is_staff%}
+        <div class="col-md-3 mb-3">
+            <button class="btn grid-button btn-warning"><i class="fas fa-eye"></i> Visualizza Tutte le Prenotazioni di oggi</button>
+        </div>
+        <div class="col-md-3 mb-3">
+            <button class="btn grid-button btn-info"><i class="fas fa-download"></i> Download</button>
+        </div>
+        <div class="col-md-3 mb-3">
+            <button class="btn grid-button btn-secondary"><i class="fas fa-upload"></i> Upload</button>
+        </div>
+        <div class="col-md-3 mb-3">
+            <button class="btn grid-button btn-dark"><i class="fas fa-cog"></i> Settings</button>
+        </div>
+        <div class="col-md-3 mb-3">
+            <button class="btn grid-button btn-light text-dark"><i class="fas fa-question-circle"></i> Help</button>
+        </div>
+        {% endif%}
+    </div>
+</div>
+{%endif%}
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <!--Bottone reindirizzeramento-->
 <div class="text-center mat-4">
-    <a href="{% url 'gestione:gestione_home' %}" class="btn btn-primary">Prenota</a> 
+    <a href="{%url 'gestione:gestione_home' %}">
+    <button type="button" class="btn btn-success btn-lg btn-block" href="{%url 'gestione:gestione_home' %}">Prenota</button>
+    </a>
 </div>
+<br>
 
 {% endblock %}
 
